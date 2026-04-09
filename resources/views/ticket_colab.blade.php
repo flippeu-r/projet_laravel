@@ -23,6 +23,13 @@
                 <li class="active"><a href="/tickets"><i class="fas fa-ticket-alt"></i> Tickets </a></li>
                 <li><a href="/heures"><i class="fas fa-clock"></i> Mes Heures </a></li>
             </ul>
+
+            <div style="padding: 10px 20px;">
+                <button onclick="document.getElementById('modale').showModal()" style="width:100%; padding:10px; background:#6c63ff; color:white; border:none; border-radius:8px; cursor:pointer;">
+                    <i class="fas fa-plus"></i> Ajout rapide
+                </button>
+            </div>
+
             <div class="Deconnexion">
                 <a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a>
             </div>
@@ -87,6 +94,37 @@
 
                     </tbody>
                 </table>
+
+                <!-- MODALE -->
+                <dialog id="modale" style="border-radius:12px; padding:30px; width:400px; border:none;">
+                    <h2 style="margin-bottom:20px;">Ajout rapide d'un ticket</h2>
+
+                    <label>Sujet</label><br>
+                    <input type="text" id="modal_sujet" style="width:100%; margin-bottom:15px; padding:8px;"><br>
+
+                    <label>Description</label><br>
+                    <textarea id="modal_description" style="width:100%; margin-bottom:15px; padding:8px;" rows="3"></textarea><br>
+
+                    <label>Projet</label><br>
+                    <select id="modal_projet" style="width:100%; margin-bottom:15px; padding:8px;">
+                        <option value="" disabled selected>Choisir un projet...</option>
+                        @foreach(\App\Models\Projet::all() as $p)
+                            <option value="{{ $p->id }}">{{ $p->nom }}</option>
+                        @endforeach
+                    </select><br>
+
+                    <label>Type</label><br>
+                    <select id="modal_type" style="width:100%; margin-bottom:20px; padding:8px;">
+                        <option value="inclus">Inclus</option>
+                        <option value="facturable">Facturable</option>
+                    </select><br>
+
+                    <div style="display:flex; gap:10px; justify-content:flex-end;">
+                        <button onclick="document.getElementById('modale').close()" style="padding:8px 16px; cursor:pointer;">Annuler</button>
+                        <button onclick="envoyerTicket()" style="padding:8px 16px; background:#6c63ff; color:white; border:none; border-radius:6px; cursor:pointer;">Créer</button>
+                    </div>
+                    
+                </dialog>
             </div>
 
         </main>
