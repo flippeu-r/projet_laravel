@@ -38,6 +38,21 @@ public function index() {
     $tickets = Ticket::all();
     return view('ticket_colab', compact('tickets'));
 }
+
+public function apiStore(Request $request) {
+    $ticket = Ticket::create([
+        'sujet'       => $request->sujet,
+        'description' => $request->description,
+        'projet_id'   => $request->projet_id,
+        'type'        => $request->type,
+        'priorite'    => 'Moyenne',
+        'statut'      => 'Nouveau',
+        'user_id'     => 1, // temporaire
+    ]);
+
+    return response()->json($ticket);
+}
+
 }
 
 

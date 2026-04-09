@@ -33,10 +33,10 @@
             <div class="ticket-header-wrapper">
                 <div class="header-left">
                     <a href="/projets" class="btn-back"><i class="fas fa-arrow-left"></i> Liste des projets</a>
-                    <h1 class="ticket-title">Refonte Site Web <span class="client-badge badge-align-middle">MCDONALDS</span></h1>
+                    <h1 class="ticket-title">{{ $projet->nom }} <span class="client-badge badge-align-middle">{{ $projet->client }}</span></h1>
                 </div>
                 
-                <a href="/projets/modifier/1" class="btn-create btn-create-outline">
+                <a href="/projets/modifier/{{ $projet->id }}" class="btn-create btn-create-outline">
                     <i class="fas fa-pen"></i> Modifier le projet
                 </a>
             </div>
@@ -58,19 +58,18 @@
                         </thead>
                        <tbody>
                         
-                        @if(isset($projets))
-                            @foreach ($projets as $projet)
+                        @if($tickets->count() > 0)
+                            @foreach ($tickets as $ticket)
                             <tr>
-                                <td><strong>#{{ $projet->id }}</strong></td>
-                                <td>{{ $projet->nom }}</td>
-                                <td><span class="client-badge">{{ $projet->client }}</span></td>
-                                <td>{{ $projet->date_creation }}</td>
-                                <td>{{ $projet->budget }} €</td>
-                                <td class="th-center"><a href="/tickets/{{ $projet->id }}" class="btn-action"><i class="fas fa-eye"></i></a></td>
+                                <td><strong>#{{ $ticket->id }}</strong></td>
+                                <td>{{ $ticket->sujet }}</td>
+                                <td><span class="client-badge">{{ $ticket->statut }}</span></td>
+                                <td>{{ $ticket->priorite }}</td>
+                                <td class="th-center"><a href="/tickets/{{ $ticket->id }}" class="btn-action"><i class="fas fa-eye"></i></a></td>
                             </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="6" class="th-center">Aucun ticket associé pour le moment.</td></tr>
+                            <tr><td colspan="5" class="th-center">Aucun ticket associé pour le moment.</td></tr>
                         @endif
 
                     </tbody>
@@ -81,37 +80,30 @@
                     </a>
                 </div>
 
+                
                 <div class="ticket-sidebar">
-                    
+    
                     <div class="info-card">
-                        <h3>Avancement Global</h3>
+                        <h3>Informations</h3>
                         <div class="info-row">
-                            <label>Progression</label>
-                            <strong>75%</strong>
-                        </div>
-                        <div class="time-bar-bg">
-                            <div class="time-bar-fill" style="width: 75%; background: #2ecc71;"></div>
+                            <label>Statut</label>
+                            <strong>{{ $projet->statut }}</strong>
                         </div>
                         <div class="info-row mt-15">
                             <label>Budget Heures</label>
-                            <span>150h / 200h</span>
+                            <span>{{ $projet->budget ?? 0 }}h</span>
+                        </div>
+                        <div class="info-row mt-15">
+                            <label>Date de fin</label>
+                            <span>{{ $projet->date_fin ?? 'Non définie' }}</span>
                         </div>
                     </div>
 
                     <div class="info-card">
                         <h3>Contexte</h3>
                         <p class="context-text">
-                            "Refonte complète du site institutionnel avec intégration du module de commande en ligne et adaptation mobile (Responsive)."
+                            {{ $projet->description ?? 'Aucune description.' }}
                         </p>
-                    </div>
-
-                    <div class="info-card">
-                        <h3>Équipe</h3>
-                        <div class="collab-stack">
-                            <span class="collab-name"><i class="fas fa-user-circle"></i> Alan Grant</span>
-                            <span class="collab-name"><i class="fas fa-user-circle"></i> Olivier</span>
-                            <span class="collab-name"><i class="fas fa-user-circle"></i> Ada</span>
-                        </div>
                     </div>
 
                 </div>
