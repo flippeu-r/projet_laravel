@@ -10,6 +10,8 @@ use App\Http\Controllers\TicketController;
 
 use App\Http\Controllers\HeureController;
 
+use App\Http\Controllers\AdminController;
+
 use App\Models\Projet;
 
 // Les routes POST (quand on valide un formulaire)
@@ -96,3 +98,7 @@ Route::get('/tickets/{id}', function ($id) {
 // --- 5. GESTION DES HEURES ---
 Route::get('/heures', [HeureController::class, 'index']);
 Route::post('/heures', [HeureController::class, 'store']);
+
+// pour les admins
+Route::get('/admin', [AdminController::class, 'index']);
+Route::post('/admin/users/{id}/role', [AdminController::class, 'changerRole']);
