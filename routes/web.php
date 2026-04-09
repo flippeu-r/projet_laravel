@@ -8,6 +8,8 @@ use App\Http\Controllers\ProjetController;
 
 use App\Http\Controllers\TicketController;
 
+use App\Http\Controllers\HeureController;
+
 use App\Models\Projet;
 
 // Les routes POST (quand on valide un formulaire)
@@ -92,6 +94,5 @@ Route::get('/tickets/{id}', function ($id) {
 
 
 // --- 5. GESTION DES HEURES ---
-Route::get('/heures', function () {
-    return view('heures'); 
-});
+Route::get('/heures', [HeureController::class, 'index']);
+Route::post('/heures', [HeureController::class, 'store']);

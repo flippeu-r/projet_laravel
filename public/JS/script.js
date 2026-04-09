@@ -584,6 +584,9 @@ if (boutonsFiltre.length > 0) {
 
 function envoyerTicket() {
 
+
+    var priorite = document.getElementById("modal_priorite").value;
+    var estimation = document.getElementById("modal_estimation").value; 
     var sujet = document.getElementById("modal_sujet").value;
     var description = document.getElementById("modal_description").value;
     var projet_id = document.getElementById("modal_projet").value;
@@ -600,7 +603,9 @@ function envoyerTicket() {
             sujet: sujet,
             description: description,
             projet_id: projet_id,
-            type: type
+            type: type,
+            priorite: priorite,      
+            estimation: estimation 
         })
     })
     .then(function(response) {

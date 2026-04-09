@@ -114,6 +114,17 @@
                         @endforeach
                     </select><br>
 
+
+                    <label>Priorité</label><br>
+                    <select id="modal_priorite" style="width:100%; margin-bottom:15px; padding:8px;">
+                        <option value="Basse">Basse</option>
+                        <option value="Moyenne" selected>Moyenne</option>
+                        <option value="Haute">Haute</option>
+                    </select><br>
+
+                    <label>Temps estimé (h)</label><br>
+                    <input type="number" id="modal_estimation" placeholder="Ex: 4" min="0" step="0.5" style="width:100%; margin-bottom:15px; padding:8px;"><br>
+
                     <label>Type</label><br>
                     <select id="modal_type" style="width:100%; margin-bottom:20px; padding:8px;">
                         <option value="inclus">Inclus</option>
