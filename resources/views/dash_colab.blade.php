@@ -29,6 +29,10 @@
                 <li><a href="/projets"><i class="fas fa-project-diagram"></i> Projets</a></li>
                 <li><a href="/tickets"><i class="fas fa-ticket-alt"></i> Tickets</a></li>
                 <li><a href="/heures"><i class="fas fa-clock"></i> Mes Heures</a></li>
+                @if(Auth::check() && Auth::user()->role == 'admin')
+                    <li><a href="/admin"><i class="fas fa-users-cog"></i> Admin</a></li>
+                @endif
+            
             </ul>
 
             <div class="Deconnexion">
