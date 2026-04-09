@@ -560,3 +560,60 @@ if (boutonsFiltre.length > 0) {
         });
     });
 }
+
+
+
+
+
+
+//----------------------------------------------------//
+
+//----------------------------------------------------//
+
+//--------------------FETCH --------------------------//
+
+//---------------------API----------------------------//
+
+//----------------------------------------------------//
+
+//----------------------------------------------------//
+
+
+
+
+
+
+function envoyerTicket() {
+
+    // On récupère les valeurs des champs de la modale
+    var sujet = document.getElementById("modal_sujet").value;
+    var description = document.getElementById("modal_description").value;
+    var projet_id = document.getElementById("modal_projet").value;
+    var type = document.getElementById("modal_type").value;
+
+    // On envoie les données à la route API avec fetch
+    fetch("/api/tickets", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+        },
+        body: JSON.stringify({
+            sujet: sujet,
+            description: description,
+            projet_id: projet_id,
+            type: type
+        })
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log("Ticket créé !", data);
+        document.getElementById("modale").close();
+        alert("Ticket créé avec succès !");
+    })
+    .catch(function(erreur) {
+        console.log("Erreur :", erreur);
+    });
+}

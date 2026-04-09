@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Tickets - Prisma</title>
 
@@ -123,7 +124,7 @@
                         <button onclick="document.getElementById('modale').close()" style="padding:8px 16px; cursor:pointer;">Annuler</button>
                         <button onclick="envoyerTicket()" style="padding:8px 16px; background:#6c63ff; color:white; border:none; border-radius:6px; cursor:pointer;">Créer</button>
                     </div>
-                    
+
                 </dialog>
             </div>
 
