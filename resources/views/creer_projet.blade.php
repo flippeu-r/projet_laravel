@@ -68,7 +68,7 @@
                         
                         <div class="form-group">
                             <label for="date">Date de fin (Deadline)</label>
-                            <input type="date" id="date" name="date" required>
+                            <input type="date" id="date" name="date_fin" required>
                             <div id="date_error" class="error-text titanic">Il faut choisir une date</div>
                         </div>
                     </div>
