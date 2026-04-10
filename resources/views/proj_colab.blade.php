@@ -65,7 +65,7 @@
                             <tr>
                                 <td><span class="client-badge">{{ $projet->client }}</span></td>
                                 <td>{{ $projet->nom }}</td>
-                                <td>-</td>
+                                <td>{{ $projet->tickets->count() }}</td>
                                 <td>{{ $projet->budget }} h</td>
                                 <td>{{ $projet->date_fin }}</td>
                                 <td><a href="/projets/{{ $projet->id }}" class="btn-action"><i class="fas fa-eye"></i></a></td>

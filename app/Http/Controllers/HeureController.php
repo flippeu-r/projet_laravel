@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Heure;
 use App\Models\Ticket;
-use Illuminate\Support\Facades\Auth;
+
 
 class HeureController extends Controller
 {
     // Affiche la page avec la liste des tickets et l'historique
     public function index() {
         $liste_tickets = Ticket::all();
-        $historique = Heure::all();
+        $historique = Heure::where('user_id', Auth::id())->get();
         return view('heures', compact('liste_tickets', 'historique'));
     }
 

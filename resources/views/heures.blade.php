@@ -36,7 +36,7 @@
                     <div class="heures-form-row">
                         <div class="form-group heures-form-group-large">
                             <label>Ticket associé</label>
-                            <select name="id_ticket" required>
+                            <select name="id_ticket">
                                 <option value="" disabled selected>Choisir un ticket...</option>
                                 @if(isset($liste_tickets))
                                     @foreach ($liste_tickets as $t)
@@ -47,11 +47,11 @@
                         </div>
                         <div class="form-group heures-form-group-small">
                             <label>Nombre d'heures</label>
-                            <input type="number" name="nb_heures" step="0.5" placeholder="Ex: 2.5" required>
+                            <input type="number" name="nb_heures" step="0.5" placeholder="Ex: 2.5" >
                         </div>
                         <div class="form-group heures-form-group-small">
                             <label>Date</label>
-                            <input type="date" name="date_saisie" value="{{ date('Y-m-d') }}" required>
+                            <input type="date" name="date_saisie" value="{{ date('Y-m-d') }}" >
                         </div>
                     </div>
                     <div class="form-group full-width">
