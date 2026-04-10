@@ -102,3 +102,10 @@ Route::post('/heures', [HeureController::class, 'store']);
 // pour les admins
 Route::get('/admin', [AdminController::class, 'index']);
 Route::post('/admin/users/{id}/role', [AdminController::class, 'changerRole']);
+
+
+// vue client
+Route::get('/client', function () {
+    $projets = \App\Models\Projet::where('user_id', Auth::id())->get();
+    return view('client', compact('projets'));
+});
