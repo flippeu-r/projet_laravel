@@ -52,9 +52,20 @@
 
 
             <div class="stats-container">
-                <div class="card">   <h3>Client</h3>     <p class="stat-value">{{ $ticket->client ?? '-' }}</p>      <span>Facturation : {{ $ticket->type ?? '-' }}</span>    </div>
-                <div class="card">   <h3>Statut</h3>     <p class="stat-value">{{ $ticket->status ?? '-' }}</p>     <span>Priorité : {{ $ticket->priorite ?? '-' }}</span>       </div>
-                <div class="card">   <h3>Temps Passé</h3>     <p class="stat-value">{{ $total_heures ?? 0 }} h</p>     <span>Cumul total</span>      </div>
+                
+                <div class="card">
+                    <h3>Client</h3>
+                    <p class="stat-value">{{ $ticket->projet->client ?? '-' }}</p>
+                    <span>Facturation : {{ $ticket->type ?? '-' }}</span>
+                </div>
+
+                <div class="card">
+                    <h3>Statut</h3>
+                    <p class="stat-value">{{ $ticket->statut ?? '-' }}</p>
+                    <span>Priorité : {{ $ticket->priorite ?? '-' }}</span>
+                </div>
+
+              <div class="card">   <h3>Temps Passé</h3>     <p class="stat-value">{{ $total_heures ?? 0 }} h</p>     <span>Cumul total</span>      </div>
             </div>
 
 

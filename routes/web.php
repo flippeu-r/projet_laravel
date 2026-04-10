@@ -90,8 +90,10 @@ Route::get('/tickets', [TicketController::class, 'index']);
 Route::get('tickets/creer', [TicketController::class,'create']);
 
 Route::get('/tickets/{id}', function ($id) {
-    // Le {id} permet d'attraper le numéro du ticket dans l'URL !
-    return view('ticket_detail');
+    $ticket = \App\Models\Ticket::findOrFail($id);
+    $historique_heures = \App\Models\Heure::where('ticket_id', $id)->get();
+    $total_heures = $historique_heures->sum('nb_heures');
+    return view('ticket_detail', compact('ticket', 'historique_heures', 'total_heures'));
 });
 
 
