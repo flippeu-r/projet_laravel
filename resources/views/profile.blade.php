@@ -18,21 +18,24 @@
                 <li><a href="/tickets"><i class="fas fa-ticket-alt"></i> Tickets </a></li>
                 <li><a href="/heures"><i class="fas fa-clock"></i> Mes Heures </a></li>
             </ul>
-            <div class="Deconnexion"><a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
+            <div class="Deconnexion"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
         </nav>
 
         <main class="main-content">
             <div class="ticket-header-wrapper">
                 <h1 class="ticket-title">Mon Profil</h1>
-                <a href="#" class="btn-create btn-settings">
+                <a href="/parametres" class="btn-create btn-settings">
                     <i class="fas fa-cog"></i> Paramètres
                 </a>
             </div>
 
             <div class="profile-container">
                 <div class="profile-header-card">
-                    <h2>{{ $pseudo ?? 'Collaborateur' }}</h2>
-                    <p class="opacity-70">{{ $email ?? 'email@prisma.com' }}</p>
+
+                    <h2>{{ Auth::user()->name }}</h2>
+                    <p class="opacity-70">{{ Auth::user()->email }}</p>
+
+                    
                     <span class="role-badge-large">Développeur Fullstack</span>
 
                     <div class="profile-stats">

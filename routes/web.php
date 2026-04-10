@@ -30,8 +30,35 @@ Route::middleware('auth')->group(function () {
         return view('dash_colab', compact('derniers_tickets', 'total_tickets', 'tickets_actifs', 'total_projets'));
     });
 
-    Route::get('/profil', function () { return view('profile'); });
+    Route::get('/profil', function () {
+        $mes_tickets = \App\Models\Ticket::where('user_id', Auth::id())->count();
+        $mes_heures = \App\Models\Heure::where('user_id', Auth::id())->sum('nb_heures');
+        return view('profile', compact('mes_tickets', 'mes_heures'));
+    });
+
+// paramètres
     Route::get('/parametres', function () { return view('settings'); });
+
+    Route::post('/parametres', function (\Illuminate\Http\Request $request) {
+        $user = Auth::user();
+
+        // On vérifie que l'ancien mot de passe est correct
+        if (!\Illuminate\Support\Facades\Hash::check($request->ancien_password, $user->password)) {
+            return back()->with('erreur', 'Ancien mot de passe incorrect.');
+        }
+
+        // On vérifie que les deux nouveaux mots de passe correspondent
+        if ($request->nouveau_password != $request->confirmer_password) {
+            return back()->with('erreur', 'Les nouveaux mots de passe ne correspondent pas.');
+        }
+
+        // On met à jour le mot de passe
+        $user->password = \Illuminate\Support\Facades\Hash::make($request->nouveau_password);
+        $user->save();
+
+        return back()->with('succes', 'Mot de passe mis à jour avec succès !');
+    });
+
 
     // Projets
     Route::get('/projets', [ProjetController::class, 'index']);

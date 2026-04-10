@@ -25,7 +25,7 @@
                 <li><a href="/heures"><i class="fas fa-clock"></i> Mes Heures </a></li>
             </ul>
             <div class="Deconnexion">
-                <a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Deconnexion </a>
             </div>
         </nav>
 

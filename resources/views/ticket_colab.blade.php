@@ -32,7 +32,7 @@
             </div>
 
             <div class="Deconnexion">
-                <a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Deconnexion </a>
             </div>
         </nav>
 

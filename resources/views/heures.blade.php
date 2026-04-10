@@ -18,7 +18,7 @@
                 <li><a href="/tickets"><i class="fas fa-ticket-alt"></i> Tickets </a></li>
                 <li class="active"><a href="/heures"><i class="fas fa-clock"></i> Mes Heures </a></li>
             </ul>
-            <div class="Deconnexion"><a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
+            <div class="Deconnexion"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
         </nav>
 
         <main class ="main-content"> 

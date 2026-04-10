@@ -21,7 +21,7 @@
                 <li><a href="/tickets"><i class="fas fa-ticket-alt"></i> Tickets </a></li>
                 <li><a href="/heures"><i class="fas fa-clock"></i> Mes Heures </a></li>
             </ul>
-            <div class="Deconnexion"><a href="/login"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
+            <div class="Deconnexion"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Deconnexion </a></div>
         </nav>
 
         <main class="main-content">
@@ -64,26 +64,38 @@
 
                 <div class="settings-section">
                     <h3>Sécurité</h3>
+                    
                     <form action="/parametres" method="POST">
                         @csrf
+
+                        @if(session('erreur'))
+                            <p style="color:red;">{{ session('erreur') }}</p>
+                        @endif
+
+                        @if(session('succes'))
+                            <p style="color:green;">{{ session('succes') }}</p>
+                        @endif
+
                         <div class="form-group full-width">
                             <label>Ancien mot de passe</label>
-                            <input type="password" class="glass-input">
+                            <input type="password" name="ancien_password" class="glass-input">
                         </div>
                         <div class="grid-2-cols">
                             <div class="form-group">
                                 <label>Nouveau mot de passe</label>
-                                <input type="password" class="glass-input">
+                                <input type="password" name="nouveau_password" class="glass-input">
                             </div>
                             <div class="form-group">
                                 <label>Confirmer</label>
-                                <input type="password" class="glass-input">
+                                <input type="password" name="confirmer_password" class="glass-input">
                             </div>
                         </div>
                         <button type="submit" class="btn-danger">
                             Mettre à jour le mot de passe
                         </button>
                     </form>
+
+
                 </div>
 
             </div>

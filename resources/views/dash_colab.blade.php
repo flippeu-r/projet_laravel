@@ -36,7 +36,7 @@
             </ul>
 
             <div class="Deconnexion">
-                <a href="/login" id="logout"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+                <a href="/logout" id="logout"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
             </div>
 
         </nav>
@@ -46,7 +46,7 @@
             <header>
                 <h1>Tableau de Bord</h1>
                 <div class="user-info">
-                    <span id="message_bienvenue">"Bonjour, [email]"</span> 
+                    <span>Bonjour, {{ Auth::user()->name }}</span>
                     <a href="/profil"><div class="profile-pic"> </div></a>    
                 </div>
             </header>
