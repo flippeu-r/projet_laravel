@@ -23,7 +23,7 @@ class ProjetController extends Controller
             'budget' => 'nullable|numeric',
             'statut' => 'required',
             'description' => 'nullable',
-            'user_id',   
+ 
 
         ]);
 

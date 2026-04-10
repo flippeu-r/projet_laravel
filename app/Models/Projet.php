@@ -13,6 +13,7 @@ class Projet extends Model
         'budget',
         'statut',
         'description',
+        'user_id', 
     ];
 
     public function tickets() {
